@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="chems.jpg" id="chems" style="width: 200px; height: 200px; position: absolute; top: 0px; left: 0px">
+<img src="begula.jpg" id="begula" style="width: 200px; height:200px; position: absolute; top: 500px; left:500px">
+<script>
+    let img1 = document.getElementById('chems');
+    let img2 = document.getElementById('begula');
+
+    window.addEventListener('keydown', moveWithKeyboard);
+
+    function moveUp() {
+        img1.style.top = parseInt(img1.style.top) - 50 + 'px';
+    }
+
+    function moveDown() {
+        img1.style.top = parseInt(img1.style.top) + 50 + 'px';
+    }
+
+    function moveLeft() {
+        img1.style.left = parseInt(img1.style.left) - 50 + 'px';
+    }
+
+    function moveRight() {
+        img1.style.left = parseInt(img1.style.left) + 50 + 'px';
+        console.log("anh 1 di chuyen=======",parseInt(img1.style.left))
+    }
+
+    function moveWithKeyboard(evt) {
+        let nobitaLeft = parseInt(img1.style.left)
+        let nobitaTop = parseInt(img1.style.top)
+        let nobitaWidth = parseInt(img1.style.width);
+        let nobiatHeight = parseInt(img1.style.height);
+
+        let begulaLeft = parseInt(img2.style.left)
+        let begulaTop = parseInt(img2.style.top)
+        let begulaWidth = parseInt(img2.style.width)
+        let begulaHeight = parseInt(img2.style.height);
+
+        if (nobitaLeft   +   nobitaWidth  >= begulaLeft
+            && nobitaTop +   nobiatHeight >= begulaTop
+            && nobitaTop  <= begulaTop  +  begulaHeight
+            && nobitaLeft <= begulaLeft +  begulaWidth) {
+            alert('dung cuoc choi')
+            return;
+
+        } else {
+                switch (evt.keyCode) {
+                    case 37:
+                        moveLeft();
+                        break;
+                    case 39:
+                        moveRight();
+                        break;
+                    case 38:
+                        moveUp();
+                        break;
+                    case 40:
+                        moveDown();
+                        break;
+
+                }
+            }
+        }
+</script>
+</body>
+</html>
